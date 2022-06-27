@@ -15,6 +15,15 @@
 						"exec": [
 							"pm.test(\"Successful POST request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.json).id = 3\r",
+							"    pm.expect(pm.response.json).petId = 1\r",
+							"    pm.expect(pm.response.json).quantity = 0\r",
+							"    pm.expect(pm.response.json).shipDate = \"2022-06-21T04:35:30.709+0000\"\r",
+							"    pm.expect(pm.response.json).status = 'placed'\r",
+							"    pm.expect(pm.response.json).complete = true\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -59,6 +68,15 @@
 						"exec": [
 							"pm.test(\"Successful GET request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.expect(pm.response.json).id = 3\r",
+							"    pm.expect(pm.response.json).petId = 1\r",
+							"    pm.expect(pm.response.json).quantity = 0\r",
+							"    pm.expect(pm.response.json).shipDate = \"2022-06-21T04:35:30.709+0000\"\r",
+							"    pm.expect(pm.response.json).status = 'placed'\r",
+							"    pm.expect(pm.response.json).complete = true\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -95,6 +113,12 @@
 						"exec": [
 							"pm.test(\"Successful DELETE request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful DELETE request\", function () {\r",
+							"    pm.expect(pm.response.json).code = 200\r",
+							"    pm.expect(pm.response.json).type = \"unknow\"\r",
+							"    pm.expect(pm.response.json).message = 3\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -131,6 +155,17 @@
 						"exec": [
 							"pm.test(\"Successful GET request\", function () {\r",
 							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.expect(pm.response.json).sold = 10\r",
+							"    pm.expect(pm.response.json).Over_the_Horizon = 2\r",
+							"    pm.expect(pm.response.json).string = 359\r",
+							"    pm.expect(pm.response.json).pending = 4\r",
+							"    pm.expect(pm.response.json).available = '432'\r",
+							"    pm.expect(pm.response.json).Available = 3\r",
+							"    pm.expect(pm.response.json).Pending = 1\r",
+							"    pm.expect(pm.response.json).status = 16\r",
 							"});"
 						],
 						"type": "text/javascript"
