@@ -1,20 +1,22 @@
 {
 	"info": {
-		"_postman_id": "b69a3ec1-0e53-444e-aebc-978ec9da771a",
+		"_postman_id": "923b05cd-69a2-4255-bd24-9fec9eed93f1",
 		"name": "Pet store",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21039286"
 	},
 	"item": [
 		{
-			"name": "Place",
+			"name": "Проверка статуса 200. Позитивный запрос (корректный данные)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
+							"\r",
+							"\r",
 							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Successful POST request\", function () {\r",
@@ -24,7 +26,10 @@
 							"    pm.expect(pm.response.json).shipDate = \"2022-06-21T04:35:30.709+0000\"\r",
 							"    pm.expect(pm.response.json).status = 'placed'\r",
 							"    pm.expect(pm.response.json).complete = true\r",
-							"});"
+							"});\r",
+							"\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -60,14 +65,71 @@
 			"response": []
 		},
 		{
-			"name": "Find",
+			"name": "Проверка статуса 400. Негативный  запрос (некорректный ID)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.json).id = 222\r",
+							"    pm.expect(pm.response.json).petId = 111\r",
+							"    pm.expect(pm.response.json).quantity = 0\r",
+							"    pm.expect(pm.response.json).shipDate = \"2022-06-21T04:35:30.709+0000\"\r",
+							"    pm.expect(pm.response.json).status = 'placed'\r",
+							"    pm.expect(pm.response.json).complete = true\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": ,\r\n  \"petId\": 1,\r\n  \"quantity\": 0,\r\n  \"shipDate\": \"2022-06-21T04:35:30.709Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Проверка статуса 200",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"Successful GET request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Successful GET request\", function () {\r",
@@ -105,14 +167,51 @@
 			"response": []
 		},
 		{
-			"name": "Delete purchase",
+			"name": "Проверка статуса 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/55",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Проверка статуса 200 и тела",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"Successful DELETE request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Successful DELETE request\", function () {\r",
@@ -147,14 +246,50 @@
 			"response": []
 		},
 		{
-			"name": "Returns pet",
+			"name": "Проверка статуса 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/55",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Проверка статуса 200 и тела",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"Successful GET request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Successful GET request\", function () {\r",
